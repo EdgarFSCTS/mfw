@@ -1,0 +1,18 @@
+{
+    "name": "edgarpatricio/mfw",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Edgarpatricio\\Mfw\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Edgar Patricio",
+            "email": "Edgar@foodsafetycts.com"
+        }
+    ],
+    "minimum-stability": "alpha",
+    "require": {}
+}
