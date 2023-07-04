@@ -1,18 +1,37 @@
 {
     "name": "edgarpatricio/mfw",
+    "keywords": ["mfw","magma","framework","php"],
     "type": "library",
     "license": "MIT",
+    "support": {
+        "issues": "https://github.com/EdgarFSCTS/mfw/issues",
+        "source": "https://github.com/EdgarFSCTS/mfw",
+        "wiki": "https://github.com/EdgarFSCTS/mfw/issues/wiki  "
+    },
     "autoload": {
         "psr-4": {
-            "Edgarpatricio\\Mfw\\": "src/"
+            "Magma\\": "src/Magma/"
         }
     },
     "authors": [
         {
             "name": "Edgar Patricio",
-            "email": "Edgar@foodsafetycts.com"
+            "email": "Edgar@foodsafetycts.com",
+            "role": "Developer"
         }
     ],
     "minimum-stability": "alpha",
-    "require": {}
+    "require": {
+        "ext-mbstring": "*",
+        "ext-iconv": "*",
+        "exp-pdo": "*",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "ext-simplexml": "*"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Magma\\Tests\\": "tests/"
+        }
+    }
 }
