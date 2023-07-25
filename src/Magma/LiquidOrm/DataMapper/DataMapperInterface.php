@@ -21,21 +21,21 @@ interface DataMapperInterface
 
   /**
    * Execute the query string
-   * @return bool
+   * @return mixed
    */
   public function bindParameters(array $fields, bool $isSearch = false) : self;
 
   /**
    * Execute the query string
-   * @return bool
+   * @return int|null
    */
   public function numRows() : int;
 
   /**
    * Execute the query string
-   * @return bool
+   * @return void
    */
-  public function execute() : void;
+  public function execute();
 
   /**
    * Execute the query string

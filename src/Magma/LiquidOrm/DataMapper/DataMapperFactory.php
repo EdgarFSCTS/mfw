@@ -4,6 +4,9 @@
 
 namespace Magma\LiquidOrm\DataMapper;
 
+use Magma\DatabaseConnection\DatabaseConnectionInterface;
+use Magma\LiquidOrm\DataMapper\Exception\DataMapperException;
+
 class DataMapperFactory
 {
   public function __construct()

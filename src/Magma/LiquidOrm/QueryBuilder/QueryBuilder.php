@@ -37,7 +37,8 @@ class QueryBuilder implements QueryBuilderInterface
     'select',
     'update',
     'delete',
-    'raw'
+    'raw',
+    'search'
   ];
 
   public function __construct()
@@ -90,6 +91,7 @@ class QueryBuilder implements QueryBuilderInterface
   {
     if ($this->isQueryTypeValid('update')) {
       if (is_array($this->key['fields']) && count($this->key['fields']) > 0) {
+        $values = '';
         foreach ($this->key['fields'] as $field) {
           if ($field !== $this->key['primary_key']) {
             $values .= $field . " = :" . $field . ", ";
@@ -125,6 +127,16 @@ class QueryBuilder implements QueryBuilderInterface
     return false;
   }
 
+  public function rawQuery() : string
+  {
+    return '';
+  }
+
+  public function searchQuery(): string
+  {
+    return '';
+  }
+
   private function hasConditions()
   {
     if (isset($this->key['conditions']) && $this->key['conditions'] != '') {
@@ -143,10 +155,10 @@ class QueryBuilder implements QueryBuilderInterface
       $this->sqlQuery = " WHERE 1";
     }
 
-    if(isset($this->key['orderBy']) && $this->key['orderBy'] != '') {
+    if (isset($this->key['orderBy']) && $this->key['orderBy'] != '') {
       $this->sqlQuery .= " ORDER BY {$this->key['orderBy']} ";
     }
-    if(isset($this->key['limit']) && $this->key['offset'] !=-1){
+    if (isset($this->key['limit']) && $this->key['offset'] != -1) {
       $this->sqlQuery .= " LIIMIT :offset, :limit";
     }
 

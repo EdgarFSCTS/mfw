@@ -4,10 +4,11 @@
 
 namespace Magma\LiquidOrm\DataMapper;
 
+use PDO;
+use Throwable;
+use PDOStatement;
 use Magma\DatabaseConnection\DatabaseConnectionInterface;
 use Magma\LiquidOrm\DataMapper\Exception\DataMapperException;
-use PDOStatement;
-use PDO;
 
 class DataMapper implements DataMapperInterface
 {
@@ -36,7 +37,8 @@ class DataMapper implements DataMapperInterface
     }
   }
 
-  public function prepare(string $sql): DataMapperInterface{
+  public function prepare(string $sql): DataMapperInterface
+  {
     $this->stmt = $this->dbh->open()->prepare($sql);
     return $this;
   }
@@ -63,6 +65,7 @@ class DataMapper implements DataMapperInterface
 
   public function bindParameters(array $fields, bool $isSearch = false) : self
   {
+    $this->isArray($fields);
     if(is_array($fields)){
       $type = ($isSearch === false) ? $this->bindValues($fields) : $this->bindSearchValues($fields);
       if($type){
@@ -96,9 +99,9 @@ class DataMapper implements DataMapperInterface
     return $this->stmt;
   }
 
-  public function execute() : void
+  public function execute()
   {
-    if($this->stmt->execute()){
+    if($this->stmt){
       return $this->stmt->execute();
     }
   }
@@ -138,8 +141,19 @@ class DataMapper implements DataMapperInterface
     }
   }
 
+  public function buildQueryParameters(array $conditions = [], array $parameters = []) : array
+  {
+    return (!empty($parameters) || (!empty($conditions)) ? array_merge($conditions, $parameters) : $parameters);
+  }
+
+  public function persist(string $sqlQuery, array $parameters)
+  {
+    try{
+      return $this->prepare($sqlQuery)->bindParameters($parameters)->execute();
+    }catch(Throwable $throwable){
+      throw $throwable;
+    }
+  }
+
   
 }
-
-
-?>

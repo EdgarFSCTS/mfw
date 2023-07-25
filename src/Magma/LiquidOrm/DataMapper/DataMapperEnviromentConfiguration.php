@@ -17,20 +17,20 @@ class DataMapperEnviromentConfiguration
   public function getDatabaseCredentials(string $driver) : array
   {
     $connectionArray = [];
-    $driver = [
-      "mysql" => [
-        "dsn" => "mysql:host=localhost",
-        "username" => "test",
-        "password" => "1234"
-      ],
-      "pgsql" => [
-        "dsn" => "pgsql:host=localhost",
-        "username" => "test",
-        "password" => "1234"
-      ],
-    ];
+    // $driver = [
+    //   "mysql" => [
+    //     "dsn" => "mysql:host=localhost",
+    //     "username" => "test",
+    //     "password" => "1234"
+    //   ],
+    //   "pgsql" => [
+    //     "dsn" => "pgsql:host=localhost",
+    //     "username" => "test",
+    //     "password" => "1234"
+    //   ],
+    // ];
     foreach ($this->credentials as $credential){
-      if(array_key_exists($credential, $driver)){
+      if(array_key_exists($driver, $credential)){
         $connectionArray = $credential[$driver];
       }
     }
