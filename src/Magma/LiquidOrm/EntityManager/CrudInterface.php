@@ -1,6 +1,6 @@
 <?php 
 
- declare(strict_types=1); 
+ declare(strict_types=1);
 
 namespace Magma\LiquidOrm\EntityManager;
 
@@ -21,7 +21,14 @@ interface CrudInterface
 
   public function delete(array $conditions);
 
-  public function search(array $selectors = [], array $conditions = []): array;
+  /**
+     * Search method which returns queried search results
+     * 
+     * @param array $selectors = []
+     * @param array $conditions = []
+     * @return null|array
+     */
+  public function search(array $selectors = [], array $conditions = []): ?array;
 
   public function rawQuery(string $rawQuery, array $conditions = []);
 

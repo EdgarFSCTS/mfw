@@ -120,11 +120,14 @@ class DataMapper implements DataMapperInterface
     }
   }
 
+  /**
+   * @inheritDoc
+   * 
+   * @return array
+   */
   public function results(): array
   {
-    if($this->stmt){
-      return $this->stmt->fetchAll();
-    }
+    if($this->stmt) return $this->stmt->fetchAll();
   }
 
   public function getLastId() : int
