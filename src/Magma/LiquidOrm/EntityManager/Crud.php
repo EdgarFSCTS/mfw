@@ -18,22 +18,25 @@ class Crud implements CrudInterface
 
   protected string $tableSchemaID;
 
-  public function __construct(DataMapper $dataMapper, QueryBuilder $queryBuilder, string $tableSchema, string $tableSchemaID)
+  protected array $options;
+
+  public function __construct(DataMapper $dataMapper, QueryBuilder $queryBuilder, string $tableSchema, string $tableSchemaID, ?array $options = [])
   {
     $this->dataMapper = $dataMapper;
     $this->queryBuilder = $queryBuilder;
     $this->tableSchema = $tableSchema;
     $this->tableSchemaID = $tableSchemaID;
+    $this->options = $options;
   }
 
   public function getSchema() : string
   {
-    return $this->tableSchema;
+    return (string)$this->tableSchema;
   }
 
   public function getSchemaID() : string
   {
-    return $this->tableSchemaID;
+    return (string)$this->tableSchemaID;
   }
 
   public function lastId() : int
