@@ -6,7 +6,7 @@
     "support": {
         "issues": "https://github.com/EdgarFSCTS/mfw/issues",
         "source": "https://github.com/EdgarFSCTS/mfw",
-        "wiki": "https://github.com/EdgarFSCTS/mfw/issues/wiki  "
+        "wiki": "https://github.com/EdgarFSCTS/mfw/issues/wiki"
     },
     "autoload": {
         "psr-4": {
@@ -24,10 +24,11 @@
     "require": {
         "ext-mbstring": "*",
         "ext-iconv": "*",
-        "exp-pdo": "*",
+        "ext-pdo": "*",
         "ext-json": "*",
         "ext-curl": "*",
-        "ext-simplexml": "*"
+        "ext-simplexml": "*",
+        "twig/twig": "^3.7"
     },
     "autoload-dev": {
         "psr-4": {
